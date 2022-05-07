@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import PostDialog from "./common/PostDialog";
 import React, { useEffect, useState } from "react";
 import { pinFileToIPFS } from "./utils/pinata";
+import axios from 'axios';
 import {
   connectWallet,
   getCurrentWalletConnected,
@@ -17,7 +18,8 @@ function App() {
   const [isMinting, setIsMinting] = useState(false)
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-
+  // axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -49,19 +51,36 @@ function App() {
   };
 
   const connectWalletPressed = async () => {
+    
+    
     const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
-    console.log(walletResponse.status);
-    console.log(walletResponse.address);
-    setWallet(walletResponse.address);
-  };
+    const res = await axios.post("/login",{
+      address: walletResponse.address
+    });
+    if(res.data == 'Verify'){
+      setStatus(walletResponse.status);
+      console.log(walletResponse.status);
+      console.log(walletResponse.address);
+      setWallet(walletResponse.address);
+    }else{
 
-  useEffect(() => {
-    async function currentWalletConnect() {
-      const { address, status } = await getCurrentWalletConnected();
-      setWallet(address);
-      setStatus(status);
     }
+  
+  };
+  const verfifyUser = async () => {
+    const res = await axios.get("/login");
+    if(res){
+      let address = res.data.address;
+      setWallet(address);
+    }
+  }
+  useEffect(() => {
+    verfifyUser();
+    // async function currentWalletConnect() {
+    //   const { address, status } = await getCurrentWalletConnected();
+    //   setWallet(address);
+    //   setStatus(status);
+    // }
   }, []);
 
   function addWalletListener() {

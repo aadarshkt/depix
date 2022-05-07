@@ -44,7 +44,7 @@ const Header = ({ handleClickOpen, walletAddress, connectWalletPressed }) => {
         </IconButton>
         <Button variant="outlined" onClick={connectWalletPressed}>
           {" "}
-          {walletAddress.length > 0 ? (
+          {walletAddress && walletAddress.length > 0 ? (
             "Connected: " +
             String(walletAddress).substring(0, 6) +
             "..." +
