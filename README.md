@@ -32,4 +32,5 @@ You may have heard of NFT'S before . you may even know that
        called provenance, and they’ll be able to share in the upside 
        as their work becomes more well known.
 
-#About our project 
+
+    
