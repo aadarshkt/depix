@@ -36,8 +36,8 @@ router.post("/", async (req, res) => {
   if (result.userExist) {
     req.session.user = token;
     return res
-      .status(302)
-      .send({ userExist: true, result: null, userCreated: false, status: 302 });
+      .status(200)
+      .send({ userExist: true, result: null, userCreated: false, status: 200 });
   }
 
   // Creating user ...........!!
