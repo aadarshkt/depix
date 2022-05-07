@@ -2,6 +2,8 @@
 
 # dependencies
 /smart contract/node_modules
+/smart contract/artifacts
+/smart contract/cache
 /node_modules
 /.pnp
 .pnp.js
