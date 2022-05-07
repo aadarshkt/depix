@@ -88,7 +88,13 @@ function App() {
       );
     }
   }
+
+
+
+
+
   return (
+
     <Box sx={{ height: "100vh" }}>
       <Header
         walletAddress={walletAddress}
@@ -104,7 +110,12 @@ function App() {
         handleUpload={handleUpload}
       />
     </Box>
+  
+
   );
+
+
+
 }
 
 export default App;
