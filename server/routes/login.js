@@ -4,11 +4,19 @@ const User = require("../models/user");
 
 const router = new express.Router();
 
+router.get("/", (req, res) => {
+  //dont change this
+  if (req.session.user) {
+    res.send({ address: req.session.user });
+  } else {
+    res.send({ address: null });
+  }
+});
+
 router.post("/", async (req, res) => {
   console.log("requesting Post  method...........!!!!");
+  const token = req.body.address;
 
-  const token = req.body.token;
-  console.log(token);
   //Validating if token provided........
   if (token == null) {
     return res.status(400).send({
@@ -21,22 +29,19 @@ router.post("/", async (req, res) => {
     });
   }
 
-  const result = await helper.findUserByToken(req.body.token);
+  const result = await helper.findUserByToken(token);
   console.log("Inside Post......!!!!");
   console.log(result);
   if (result.userExist) {
+    req.session.user = token;
     return res
-      .status(302)
-      .send({ 
-        userExist: true, 
-        result: null, 
-        userCreated: false, 
-        status: 302 
-      });
+      .status(200)
+      .send({ userExist: true, result: null, userCreated: false, status: 200 });
   }
 
   // Creating user ...........!!
   const user = new User({ token: token });
+  req.session.user = token;
   user.save().then((_result) => {
     res.status(201).send({
       message: "User Created",
