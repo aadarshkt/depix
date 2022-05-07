@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "IERC721Enumerable",
-  "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol",
+  "contractName": "IERC721Metadata",
+  "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
   "abi": [
     {
       "anonymous": false,
@@ -159,6 +159,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -266,19 +279,13 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "name": "tokenByIndex",
+      "inputs": [],
+      "name": "symbol",
       "outputs": [
         {
-          "internalType": "uint256",
+          "internalType": "string",
           "name": "",
-          "type": "uint256"
+          "type": "string"
         }
       ],
       "stateMutability": "view",
@@ -286,36 +293,18 @@
     },
     {
       "inputs": [
-        {
-          "internalType": "address",
-          "name": "owner",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "name": "tokenOfOwnerByIndex",
-      "outputs": [
         {
           "internalType": "uint256",
           "name": "tokenId",
           "type": "uint256"
         }
       ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "totalSupply",
+      "name": "tokenURI",
       "outputs": [
         {
-          "internalType": "uint256",
+          "internalType": "string",
           "name": "",
-          "type": "uint256"
+          "type": "string"
         }
       ],
       "stateMutability": "view",
