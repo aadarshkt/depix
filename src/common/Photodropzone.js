@@ -67,7 +67,7 @@ function Photodropzone({ uploadFiles, handleClose, isMinting }) {
 
   const thumbs = files.map((file) => (
     <div key={file.name}>
-      <img width="100%" height="100%" src={file.preview} alt={file.name} />
+      <img width="500" height="400" src={file.preview} alt={file.name} />
     </div>
   ));
 
