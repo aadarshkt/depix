@@ -2,7 +2,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
 const web3 = createAlchemyWeb3(alchemyKey);
 const contractABI = require("../contract-abi.json");
-const contractAddress = "0x9868B67C8daa02A0407d9F77F6fF05C5c2a72A9C";
+const contractAddress = "0x752226bF0FE28D21926BD0CFFd952b76d43671E7";
 
 export const connectWallet = async () => {
   if (window.ethereum) {
@@ -120,3 +120,6 @@ export const mintNFT = async (url, caption) => {
     };
   }
 };
+
+// Contract deployed to address: 0x1cDeCb8a9d4D2Bbe44F054B45c069aa08b876cd7
+// Marketplace contract address 0xef35F33b4922a326B87447b24798bA1e4FD599B1

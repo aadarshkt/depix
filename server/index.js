@@ -5,6 +5,9 @@ const User = require("./models/user");
 const Joi = require("joi");
 require("dotenv").config();
 
+
+
+
 const loginRoute = require("./routes/login");
 const userRoute = require("./routes/user");
 const nftRoute = require("./routes/nft");
@@ -27,6 +30,35 @@ mongoose
   .catch((e) => console.error(e));
 
 app.use(express.json());
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+ var cors = require("cors");
+
+  app.use(cors({
+    origin: '*',
+    credentials: true
+  }));
+  app.use((req,res,next)=>{
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'Origin,X-Requested-With,Content-Type,Accept,Authorization'
+    );
+    res.setHeader('Access-Control-Allow-Methods','GET, POST, PATCH, DELETE');
+    next();
+  })
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  //setting up sessions
+  app.use(cookieParser());
+  app.use(session({
+    key: "userAddress",
+    secret: "keepitsecret",
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      exprires: 60*60*24
+    }
+  }))
 
 app.use("/users", userRoute);
 app.use("/nft", nftRoute);

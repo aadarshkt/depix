@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "IERC721Metadata",
-  "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol",
+  "contractName": "ERC721URIStorage",
+  "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
   "abi": [
     {
       "anonymous": false,
@@ -108,7 +108,7 @@
       "outputs": [
         {
           "internalType": "uint256",
-          "name": "balance",
+          "name": "",
           "type": "uint256"
         }
       ],
@@ -127,7 +127,7 @@
       "outputs": [
         {
           "internalType": "address",
-          "name": "operator",
+          "name": "",
           "type": "address"
         }
       ],
@@ -183,7 +183,7 @@
       "outputs": [
         {
           "internalType": "address",
-          "name": "owner",
+          "name": "",
           "type": "address"
         }
       ],
@@ -232,7 +232,7 @@
         },
         {
           "internalType": "bytes",
-          "name": "data",
+          "name": "_data",
           "type": "bytes"
         }
       ],
@@ -250,7 +250,7 @@
         },
         {
           "internalType": "bool",
-          "name": "_approved",
+          "name": "approved",
           "type": "bool"
         }
       ],
