@@ -30,13 +30,26 @@ const findUserByToken = async function (token) {
       };
     });
 };
-
+const validateNft = (body) => {
+  const nftSchema = {
+    discription: Joi.string().required(),
+    name: Joi.string().required(),
+    ipfshash: Joi.string().required(),
+    price: Joi.string().required(),
+  };
+  return Joi.validate(body,nftSchema);
+};
 const addNftToId = async function (_id, nft) {
   return User.findByIdAndUpdate(
     { _id },
     {
       $addToSet: {
-        nfts: nft,
+        nfts: {
+          ipfshash: nft.ipfshash,
+          description: nft.description,
+          price: nft.price,
+          name: nft.name,
+        },
       },
     }
   )
@@ -57,4 +70,5 @@ module.exports = {
   validate,
   findUserByToken,
   addNftToId,
+  validateNft
 };
