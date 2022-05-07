@@ -27,7 +27,12 @@ router.post("/", async (req, res) => {
   if (result.userExist) {
     return res
       .status(302)
-      .send({ userExist: true, result: null, userCreated: false, status: 302 });
+      .send({ 
+        userExist: true, 
+        result: null, 
+        userCreated: false, 
+        status: 302 
+      });
   }
 
   // Creating user ...........!!
