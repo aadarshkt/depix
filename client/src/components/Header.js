@@ -69,7 +69,19 @@ const Header = ({ handleClickOpen, walletAddress, connectWalletPressed }) => {
                          }} mr={1} ml={1}/>
 
                       <Box ml={1}> 
-                          Category
+                          About
+                      </Box> </Button>
+
+                      <Button sx={{ color:"#128cffa3", 
+                       fontSize:"1.4rem"}}>
+                        <CategoryIcon sx={{ 
+                        color:"#574ff4",
+                        width:"2rem",
+                        height:"2rem",
+                         }} mr={1} ml={1}/>
+
+                      <Box ml={1}> 
+                          Contact Us
                       </Box> </Button>
 
                       </Box>

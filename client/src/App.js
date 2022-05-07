@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import NFTcard from "./components/NFTcard";
 import { Box } from "@mui/material";
 import PostDialog from "./common/PostDialog";
 import React, { useEffect, useState } from "react";
@@ -109,8 +110,9 @@ function App() {
         handleClose={handleClose}
         handleUpload={handleUpload}
       />
+      <NFTcard/>
     </Box>
-  
+    
 
   );
 
