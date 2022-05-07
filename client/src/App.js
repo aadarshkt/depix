@@ -51,6 +51,8 @@ function App() {
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
     setStatus(walletResponse.status);
+    console.log(walletResponse.status);
+    console.log(walletResponse.address);
     setWallet(walletResponse.address);
   };
 
