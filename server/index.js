@@ -5,11 +5,9 @@ const User = require("./models/user");
 const Joi = require("joi");
 require("dotenv").config();
 
-
-const loginRoute = require("./routes/user");
-const userRouter=require("./routes/login");
-const nftRouter=require("./routes/nft");
-
+const loginRoute = require("./routes/login");
+const userRoute = require("./routes/user");
+const nftRoute = require("./routes/nft");
 
 const app = express();
 const mongoCred = process.env.MONGO_DB;
@@ -28,13 +26,8 @@ mongoose
   })
   .catch((e) => console.error(e));
 
-
-
 app.use(express.json());
 
-
-
-app.use(loginRoute);
-app.use(userRouter);
-app.use(nftRouter);
-
+app.use("/users", userRoute);
+app.use("/nft", nftRoute);
+app.use("/login", loginRoute);

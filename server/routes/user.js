@@ -1,14 +1,17 @@
 const express = require("express");
 const helper = require("../controllers/helperFunctions");
 const User = require("../models/user");
+
 const router = express.Router();
 
-router.get("/users", (req, res) => {
+router.get("/", (req, res) => {
+  console.log("inside users.....!!!");
   User.find().then((result) => {
     res.send(result);
   });
 });
-router.get("/users/:token", async (req, res) => {
+
+router.get("/:token", async (req, res) => {
   console.log("Inside Token");
   const userToken = req.params.token;
   console.log(typeof userToken);

@@ -3,7 +3,7 @@ const helper = require("../controllers/helperFunctions");
 
 const router = express.Router();
 
-router.post("/nft", async (req, res) => {
+router.post("/", async (req, res) => {
   console.log("Inside Nft.........!!!!");
 
   //validating Error.....
