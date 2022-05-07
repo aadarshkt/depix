@@ -2,6 +2,7 @@
   "name": "depix",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@alch/alchemy-web3": "^1.4.2",
     "@emotion/react": "^11.9.0",

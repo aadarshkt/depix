@@ -20,20 +20,17 @@ const { get } = require("express/lib/response");
 const jIO = require("jio");
 const { func } = require("joi");
 const { use } = require("express/lib/router");
-
-mongoose
-  .connect(dbAccess)
-  .then((_result) => {
-    console.log("Connected to MongoDB.................!!!!");
-    app.listen(3000, () => console.log("Listening to 30000 port.........."));
-  })
-  .catch((e) => console.error(e));
-
-app.use(express.json());
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
- var cors = require("cors");
 
+mongoose
+  .connect("mongodb+srv://testdepix:testdepix@cluster0.pqtoa.mongodb.net/testdepix?retryWrites=true&w=majority")
+  .then((_result) => {
+    console.log("Connected to MongoDB.................!!!!");
+    app.listen(3001, () => console.log("Listening to 3001 port.........."));
+  })
+  .catch((e) => console.error(e));
+  var cors = require("cors");
   app.use(cors({
     origin: '*',
     credentials: true
@@ -59,6 +56,7 @@ const cookieParser = require('cookie-parser');
       exprires: 60*60*24
     }
   }))
+
 
 app.use("/users", userRoute);
 app.use("/nft", nftRoute);
