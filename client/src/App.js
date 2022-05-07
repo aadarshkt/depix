@@ -57,7 +57,8 @@ function App() {
     const res = await axios.post("/login",{
       address: walletResponse.address
     });
-    if(res.data == 'Verify'){
+    console.log(res.data)
+    if(res.data.userExist){
       setStatus(walletResponse.status);
       console.log(walletResponse.status);
       console.log(walletResponse.address);
@@ -107,7 +108,13 @@ function App() {
       );
     }
   }
+
+
+
+
+
   return (
+
     <Box sx={{ height: "100vh" }}>
       <Header
         walletAddress={walletAddress}
@@ -123,7 +130,12 @@ function App() {
         handleUpload={handleUpload}
       />
     </Box>
+  
+
   );
+
+
+
 }
 
 export default App;
