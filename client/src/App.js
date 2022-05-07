@@ -52,7 +52,7 @@ function App() {
 
   const connectWalletPressed = async () => {
     
-    
+    try{
     const walletResponse = await connectWallet();
     const res = await axios.post("/login",{
       address: walletResponse.address
@@ -66,7 +66,9 @@ function App() {
     }else{
 
     }
-  
+    }catch(err){
+      console.log(err);
+    }
   };
   const verfifyUser = async () => {
     const res = await axios.get("/login");
