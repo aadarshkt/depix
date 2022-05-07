@@ -2,18 +2,15 @@ const express = require("express");
 const helper = require("../controllers/helperFunctions");
 const User = require("../models/user");
 
-
-
 const router = new express.Router();
 
-
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   console.log("requesting Post  method...........!!!!");
 
   const token = req.body.token;
-  const result = helper.findUserByToken(req.body.token);
+  const result = await helper.findUserByToken(req.body.token);
+  console.log("Inside Post......!!!!");
   console.log(result);
-
   if (result.userExist) {
     return res
       .status(302)
@@ -29,7 +26,6 @@ router.post("/login", (req, res) => {
       staus: 201,
     });
   });
-
 });
 
 module.exports = router;

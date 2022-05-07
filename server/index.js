@@ -3,14 +3,17 @@ const req = require("express/lib/request");
 const res = require("express/lib/response");
 const User = require("./models/user");
 const Joi = require("joi");
-const loginRoute = require("./router/login");
+require("dotenv").config();
 
+
+const loginRoute = require("./routes/user");
+const userRouter=require("./routes/login");
+const nftRouter=require("./routes/nft");
 
 
 const app = express();
-require("dotenv").config();
-const mongoCred = process.env.MONGO_CRED;
-const dbAccess = `mongodb+srv://testdepix:testdepix@cluster0.pqtoa.mongodb.net/testdepix?retryWrites=true&w=majority`;
+const mongoCred = process.env.MONGO_DB;
+const dbAccess = mongoCred;
 const mongoose = require("mongoose");
 const { get } = require("express/lib/response");
 const jIO = require("jio");
@@ -25,64 +28,13 @@ mongoose
   })
   .catch((e) => console.error(e));
 
+
+
 app.use(express.json());
-// Getting all The Users Available
-
-app.get("/users", (req, res) => {
-  User.find().then((result) => {
-    res.send(result);
-  });
-});
-app.use(loginRoute)
 
 
-//Getting the Perticular User information stored in Server
-app.get("/users/:token", (req, res) => {
-  console.log("Inside Token");
-  const userToken = req.params.token;
-  console.log(typeof userToken);
 
-  //   const result = User.find({ token: userToken }, (error, data) =>
-  //     console.log(data)
-  //   );
-  //   console.log(result);
-  const result = findUserByToken(userToken);
-  console.log("I am Back....!!!!");
-  console.log(result);
-  //   if (result) {
-  //     res.status(200).send({ status: 200, result: result });
-  //     return;
-  //   }
-  //   res.status(404).send({ stattus: 404, result: null });
-});
+app.use(loginRoute);
+app.use(userRouter);
+app.use(nftRouter);
 
-
-//Adding nft to User
-app.post("/nft", (req, res) => {
-  console.log("Inside Nft.........!!!!");
-
-  //validating Error.....
-  console.log(req.body);
-  const { error } = validate(req.body);
-  if (error) {
-    return res.status(404).send(error.details[0]);
-  }
-
-  // validating User....
-  const user = findUserByToken(req.body.token);
-  if (!user.userExist) {
-    return res.status(404).send({
-      userExist: false,
-      message: "User Does not exist",
-      result: null,
-    });
-  }
-
-  // Adding Nft......
-  const result = addNftToId(user.result._id, req.body.nft);
-  res.status(201).send({
-    message: "Nft added to User account",
-    result: result,
-    status: 201,
-  });
-});
