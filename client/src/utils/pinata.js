@@ -23,14 +23,44 @@ export const pinFileToIPFS = async (
       },
     })
     .then(function (response) {
-        const ipfsHash = response.data.IpfsHash
-        console.log(ipfsHash)
-        return {
-            success: true,
-            pinataUrl: 'https://gateway.pinata.cloud/ipfs/' + ipfsHash
-        }
+      const ipfsHash = response.data.IpfsHash;
+      console.log(ipfsHash);
+      return {
+        success: true,
+        pinataUrl: "https://gateway.pinata.cloud/ipfs/" + ipfsHash,
+      };
     })
     .catch(function (error) {
       console.log(error);
+    });
+};
+
+export const pinJSONToIPFS = async (
+  JSONBody,
+  pinataApiKey,
+  pinataSecretApiKey
+) => {
+  const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
+  //making axios POST request to Pinata
+  return axios
+    .post(url, JSONBody, {
+      headers: {
+        pinata_api_key: pinataApiKey,
+        pinata_secret_api_key: pinataSecretApiKey,
+      },
+    })
+    .then(function (response) {
+      return {
+        success: true,
+        pinataUrl:
+          "https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash,
+      };
+    })
+    .catch(function (error) {
+      console.log(error);
+      return {
+        success: false,
+        message: error.message,
+      };
     });
 };

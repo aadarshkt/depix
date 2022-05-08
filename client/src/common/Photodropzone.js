@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Button from "@mui/material/Button";
 import { Box, CircularProgress, TextField } from "@mui/material";
+import { PriceChange } from "@mui/icons-material";
 
 const baseStyle = {
   display: "flex",
@@ -32,6 +33,7 @@ const rejectStyle = {
 function Photodropzone({ uploadFiles, handleClose, isMinting }) {
   const [files, setFiles] = useState([]);
   const [caption, setCaption] = useState("");
+  const [price, setPrice] = useState("")
 
   const onDrop = useCallback((acceptedFiles) => {
     setFiles(
@@ -81,7 +83,7 @@ function Photodropzone({ uploadFiles, handleClose, isMinting }) {
   );
 
   const handleUpload = () => {
-    uploadFiles(files, caption);
+    uploadFiles(files, caption, price);
   };
 
   return (
@@ -119,6 +121,18 @@ function Photodropzone({ uploadFiles, handleClose, isMinting }) {
           }}
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
+        />
+        <TextField
+          label="Price"
+          variant="standard"
+          size="small"
+          sx={{
+            width: "100%",
+            pb: 5,
+          }}
+          placeholder="in ETH"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
         />
         <Box
           sx={{

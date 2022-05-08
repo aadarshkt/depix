@@ -261,8 +261,8 @@
       ]
     },
     "D:\\JavaScript Projects\\depix\\smart contract\\contracts\\Marketplace.sol": {
-      "lastModificationDate": 1651935460665,
-      "contentHash": "be54e98890949e9809a3e84ebd23b399",
+      "lastModificationDate": 1651972987019,
+      "contentHash": "18bff163f783652030d7db89b75d01c4",
       "sourceName": "contracts/Marketplace.sol",
       "solcConfig": {
         "version": "0.8.4",
