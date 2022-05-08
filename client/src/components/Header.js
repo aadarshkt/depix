@@ -25,7 +25,7 @@ const Header = ({ handleClickOpen, walletAddress, connectWalletPressed }) => {
         }}>
 
              <Typography variant="h4" color="#072953" fontSize="2.125rem">
-              DivMiners
+              DevMiners
             </Typography>
         </Box>
 
