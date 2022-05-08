@@ -19,7 +19,7 @@ export default function MultiActionAreaCard() {
           textAlign:"center",
         }}>
           <Typography gutterBottom variant="h5" component="div" sx={{fontWeight:"600",
-          fontSize:"2rem",
+          fontSize:"1.6rem",
           color:"#000"
           }}>
             Lizard
@@ -30,7 +30,7 @@ export default function MultiActionAreaCard() {
           width:"100%",
         }}
           component="img"
-          height="140"
+          height="250"
           image="https://preview.redd.it/2co01585e8k81.jpg?width=507&format=pjpg&auto=webp&s=a91fe1395e27f9d9654f2dac6bd8e9337982d022"
           alt="Enter Your IMG Here"
         />
@@ -38,6 +38,12 @@ export default function MultiActionAreaCard() {
           alignContent:"center",
           width:"100%",
         }}>
+
+          <Typography sx={{
+            fontSize:"2rem"
+          }} >
+            Owner Name
+          </Typography>
           
           <Typography variant="body2" color="text.secondary" text-align="center">
             Info about NTF should be written here and description also
