@@ -25,6 +25,8 @@ function App() {
   const handleClickOpen = () => {
     setOpen(true);
   };
+ 
+  const user=[1,2,3,4,5,6,7,8]
 
   const handleClose = () => {
     setOpen(false);
@@ -121,48 +123,22 @@ function App() {
         handleClose={handleClose}
         handleUpload={handleUpload}
       />
-      <Grid container spacing={2}>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
-  <Grid item xs={12} sm={6} md={4} lg={3} sx={{
-    justifyContent:"center",
-  }}>
-    <Item><NFTcard/></Item>
-  </Grid>
+     
+    
+ <Grid container spacing={2} sx={{
+        marginTop:"7rem"
+      }}>
+
+        {
+         user.map((item,i) =>
+         <Grid item xs={12} sm={6} md={4} lg={3} sx={{
+          justifyContent:"center",
+        }}>
+          <Item><NFTcard/></Item>
+        </Grid>
+         )
+         
+       }
   
 </Grid>
     </Box>
