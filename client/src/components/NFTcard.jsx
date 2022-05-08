@@ -11,7 +11,7 @@ export default function MultiActionAreaCard() {
   return (
     <Card sx={{ maxWidth: 345 ,}}>
       <CardActionArea sx={{
-        padding:"2rem",
+        // padding:"2rem",
         backgroundColor:"#e2e8fbc4",
         
       }}>
