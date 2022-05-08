@@ -31,6 +31,23 @@ You may have heard of NFT'S before . you may even know that
        creators are always linked to their projects, a concept 
        called provenance, and they’ll be able to share in the upside 
        as their work becomes more well known.
+       
+  #About our project
+      We made a website using react.js and material UI so that anyone can 
+      mint a normal image to NFT and one can buy and sell NFT.
+      
+      Git Hub Link - https://github.com/aadarsh-kt/depix
+      
+  #Contributor
+     1] Aadarsh kumar tiwari
+     2] Uttam Pandit
+     3] Shreyas Sarve
+     4] Kartik Hatwar
+     5] Atharv Kamble
+
+
+
+
 
 
     
