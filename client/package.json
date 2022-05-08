@@ -2,6 +2,7 @@
   "name": "depix",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@alch/alchemy-web3": "^1.4.2",
     "@emotion/react": "^11.9.0",
@@ -12,6 +13,7 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "ethers": "^5.6.5",
     "feather-icons": "^4.29.0",
     "filereader": "^0.10.3",
     "ipfs-http-client": "^56.0.3",
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^4.6.0",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
