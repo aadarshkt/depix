@@ -1,5 +1,9 @@
 import Header from "./components/Header";
-import { Box } from "@mui/material";
+import NFTcard from "./components/NFTcard";
+import { Box} from "@mui/material";
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
 import PostDialog from "./common/PostDialog";
 import React, { useEffect, useState } from "react";
 import { pinFileToIPFS } from "./utils/pinata";
@@ -77,6 +81,8 @@ function App() {
   const handleClickOpen = () => {
     setOpen(true);
   };
+ 
+  const user=[1,2,3,4,5,6,7,8]
 
   const handleClose = () => {
     setOpen(false);
@@ -133,6 +139,20 @@ function App() {
       setWallet(walletResponse.address);
     }else{
 
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
+
+  useEffect(() => {
+    async function currentWalletConnect() {
+      const { address, status } = await getCurrentWalletConnected();
+      setWallet(address);
+      setStatus(status);
     }
     }catch(err){
       console.log(err);
@@ -194,8 +214,26 @@ function App() {
         handleClose={handleClose}
         handleUpload={handleUpload}
       />
-    </Box>
+     
+    
+ <Grid container spacing={2} sx={{
+        marginTop:"7rem"
+      }}>
+
+        {
+         user.map((item,i) =>
+         <Grid item xs={12} sm={6} md={4} lg={3} sx={{
+          justifyContent:"center",
+        }}>
+          <Item><NFTcard/></Item>
+        </Grid>
+         )
+         
+       }
   
+</Grid>
+    </Box>
+    
 
   );
 

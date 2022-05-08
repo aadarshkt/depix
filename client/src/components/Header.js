@@ -2,8 +2,8 @@ import { Box, Typography, IconButton, Button, AppBar, Toolbar } from "@mui/mater
 import React from "react";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Home from '@mui/icons-material/Home';
-import CategoryIcon from '@mui/icons-material/Category';
-
+import InfoIcon from '@mui/icons-material/Info';
+import ContactsIcon from '@mui/icons-material/Contacts';
 
 
 const Header = ({ handleClickOpen, walletAddress, connectWalletPressed }) => {
@@ -57,30 +57,42 @@ const Header = ({ handleClickOpen, walletAddress, connectWalletPressed }) => {
                          Home
                       </Box> </Button>
 
-                      </Box>
-                      <Box>
-        
-                       <Button sx={{ color:"#128cffa3", 
-                       fontSize:"1.4rem"}}>
-                        <CategoryIcon sx={{ 
+                      <Button sx={{ color:"#128cffa3",
+                        fontSize:"1.4rem",
+                        }} mr={1} ml={1}>
+                        <InfoIcon sx={{ 
                         color:"#574ff4",
                         width:"2rem",
                         height:"2rem",
                          }} mr={1} ml={1}/>
 
                       <Box ml={1}> 
-                          Category
+                         About
+                      </Box> </Button>
+
+                      <Button sx={{ color:"#128cffa3",
+                        fontSize:"1.4rem",
+                        }} mr={1} ml={1}>
+                        <ContactsIcon sx={{ 
+                        color:"#574ff4",
+                        width:"2rem",
+                        height:"2rem",
+                         }} mr={1} ml={1}/>
+
+                      <Box ml={1}> 
+                      Contact Us
                       </Box> </Button>
 
                       </Box>
-    
+                     
           </Box>
           <Box
             sx={{
               display: "flex",
+              // marginLeft:"1rem",
               flexDirection: "row",
               justifyContent: "flex-end",
-              width: "50%",
+              width: "40%",
               height: 50,
               backgroundColor: "white",
               alignItems: "center",
