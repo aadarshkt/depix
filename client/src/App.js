@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import PostDialog from "./common/PostDialog";
 import React, { useEffect, useState } from "react";
 import { pinFileToIPFS } from "./utils/pinata";
+import axios from 'axios';
 import {
   connectWallet,
   getCurrentWalletConnected,
@@ -71,6 +72,8 @@ function App() {
     setLoading(false);
   };
 
+  // axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -116,19 +119,39 @@ function App() {
   };
 
   const connectWalletPressed = async () => {
+    
+    try{
     const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
-    console.log(walletResponse.status);
-    console.log(walletResponse.address);
-    setWallet(walletResponse.address);
-  };
+    const res = await axios.post("/login",{
+      address: walletResponse.address
+    });
+    console.log(res.data)
+    if(res.data.userExist){
+      setStatus(walletResponse.status);
+      console.log(walletResponse.status);
+      console.log(walletResponse.address);
+      setWallet(walletResponse.address);
+    }else{
 
-  useEffect(() => {
-    async function currentWalletConnect() {
-      const { address, status } = await getCurrentWalletConnected();
-      setWallet(address);
-      setStatus(status);
     }
+    }catch(err){
+      console.log(err);
+    }
+  };
+  const verfifyUser = async () => {
+    const res = await axios.get("/login");
+    if(res){
+      let address = res.data.address;
+      setWallet(address);
+    }
+  }
+  useEffect(() => {
+    verfifyUser();
+    // async function currentWalletConnect() {
+    //   const { address, status } = await getCurrentWalletConnected();
+    //   setWallet(address);
+    //   setStatus(status);
+    // }
   }, []);
 
   // function addWalletListener() {
@@ -156,6 +179,7 @@ function App() {
   //   }
   // }
   return (
+
     <Box sx={{ height: "100vh" }}>
       <Header
         walletAddress={walletAddress}
@@ -171,7 +195,12 @@ function App() {
         handleUpload={handleUpload}
       />
     </Box>
+  
+
   );
+
+
+
 }
 
 export default App;
